@@ -23,3 +23,43 @@
 # 源码、文档。文档包括：运行截图和保存的结果图片，文档中也标明学号和姓名。打包后命名为："姓名拼音_学号_i",i是第i次作业。例如：张三，学号66666，提交的第一次作业命名为：zhangsan_66666_1。
 
 import cv2
+
+
+def changeBgrIntoBrg(imagePath):
+    image = cv2.imread(imagePath)[:, :, (0, 2, 1)]
+
+    cv2.imshow("BRG_image", image)
+
+    cv2.waitKey(0)
+
+    return image
+
+
+def giveRedboxToImage(image, tl, br):
+
+
+    image[tl[0]:br[0] + 1, tl[1]] = [0, 0, 255]  # 北边红线
+
+    image[tl[0], tl[1]:br[1] + 1] = [0, 0, 255]  # 西边红线
+
+    image[br[0] + 1, tl[1]:br[1] + 1] = [0, 0, 255]  # 东边红线
+
+    image[tl[0]:br[0] + 1, br[1] + 1] = [0, 0, 255]  # 南边红线
+
+    cv2.imshow("BRG_image", image)
+
+    cv2.waitKey(0)
+
+    return image
+
+
+def main():
+    image = changeBgrIntoBrg(r"images\hw_1\image1.jpg")
+
+    image = giveRedboxToImage(image,(12, 6),(12+90, 6+28))
+
+    pass
+
+
+if __name__ == "__main__":
+    main()
