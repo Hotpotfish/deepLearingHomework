@@ -36,8 +36,6 @@ def changeBgrIntoBrg(imagePath):
 
 
 def giveRedboxToImage(image, tl, br):
-
-
     image[tl[0]:br[0] + 1, tl[1]] = [0, 0, 255]  # 北边红线
 
     image[tl[0], tl[1]:br[1] + 1] = [0, 0, 255]  # 西边红线
@@ -56,7 +54,7 @@ def giveRedboxToImage(image, tl, br):
 def main():
     image = changeBgrIntoBrg(r"images\hw_1\image1.jpg")
 
-    image = giveRedboxToImage(image,(12, 6),(12+90, 6+28))
+    image = giveRedboxToImage(image, (12, 6), (12 + 90, 6 + 28))
 
     pass
 
