@@ -10,9 +10,6 @@
 # (3) 利用cv2.imwrite()函数保存加上红框的图片。
 #
 #
-# 进阶题目：
-# 假设有函数y = cos(ax + b), 其中a为学号前两位，b为学号最后两位。首先从此函数中以相同步长（点与点之间在x轴上距离相同），在0<(ax+b)<2pi范围内，采样出2000个点，然后利用采样的2000个点作为特征点进行三次函数拟合。请提交拟合的三次函数以及对应的图样（包括采样点及函数曲线）。
-#
 #
 # 注意：基本作业为所有人必做。进阶作业选作，不计入总分。
 #
@@ -52,12 +49,12 @@ def giveRedboxToImage(image, tl, br):
 
     cv2.waitKey(0)
 
-    cv2.imwrite(r"images\hw_1\image1_modifiy.jpg", image)
+    cv2.imwrite(r"Resource\hw_1\image1_modifiy.jpg", image)
 
     return image
 
 
-def cosinFunctionFitting():
+def cosinFunctionFitting_1():
     x = np.linspace(-7 / 18, (2 * math.pi - 7) / 18, 2000)[:, np.newaxis]
 
     y = np.cos(18 * x + 7)
@@ -97,14 +94,32 @@ def cosinFunctionFitting():
     plt.show()
 
 
+def cosinFunctionFitting_2():
+    x = np.linspace(-7 / 18, (2 * math.pi - 7) / 18, 2000)
+
+    y_rel = np.cos(18 * x + 7)  # 真实分布
+
+    plt.scatter(x, y_rel)
+
+    poly = np.polyfit(x, y_rel, deg=3)
+
+    fuction = np.poly1d(poly)
+
+    y_pre = np.polyval(poly, x)  # 预测分布
+
+    plt.plot(x, y_pre, 'r-', lw=5)
+
+    plt.show()
+
+    print(fuction)
 
 
 def main():
-    # image = changeBgrIntoBrg(r"images\hw_1\image1.jpg")
+    # image = changeBgrIntoBrg(r"Resource\hw_1\image1.jpg")
     #
     # image = giveRedboxToImage(image, (12, 6), (12 + 90, 6 + 28))
 
-    cosinFunctionFitting()
+    cosinFunctionFitting_2()
 
     pass
 
