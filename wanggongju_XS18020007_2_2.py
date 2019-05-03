@@ -26,7 +26,7 @@ def getMinYAndCurrentX():
         # 迭代求最小值
         for step in range(1000):
             X, Y, Loss, _ = sess.run([x, y, loss, train_op])
-            print('x:', X, 'y:', Y, 'loss:', Loss)
+            print('x:', X, 'y:', Y)
 
 
 def main():

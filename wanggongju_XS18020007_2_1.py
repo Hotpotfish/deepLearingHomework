@@ -76,7 +76,7 @@ def cubicFunctionFitting():
                   W2, "* x ^ 2 + ",
                   W3, "* x ^ 3 + ",
                   B)
-            print('loss', l)
+            print('loss：', l)
     # 将session保存为ckpt格式
     saver.save(sess, "Resource/hw_2/ckpt/hw_2.ckpt")
 
