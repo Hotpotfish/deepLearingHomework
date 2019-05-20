@@ -46,7 +46,7 @@ def cubicFunctionFitting():
 
     # 计算损失
     loss = tf.losses.mean_squared_error(tf_y, y_pre)
-    optimizer = tf.train.AdamOptimizer(learning_rate=0.1)
+    optimizer = tf.train.AdamOptimizer(learning_rate=0.3)
     train_op = optimizer.minimize(loss)
 
     # 创建保存器
@@ -58,7 +58,7 @@ def cubicFunctionFitting():
 
     # 开启训练过程的连续显示
     plt.ion()
-    for step in range(1000):
+    for step in range(10000):
         # 训练输出每个位置对应输出结果
         _, l, Y_pred, W1, W2, W3, B = sess.run(
             [train_op, loss, y_pre, w1, w2, w3, b],
@@ -78,11 +78,11 @@ def cubicFunctionFitting():
                   B)
             print('loss：', l)
     # 将session保存为ckpt格式
-    saver.save(sess, "Resource/hw_2/ckpt/hw_2.ckpt")
+    saver.save(sess, "../Resource/hw_2/ckpt/hw_2.ckpt")
 
     # 将session的变量存储为pb文件
     constant_graph = graph_util.convert_variables_to_constants(sess, sess.graph_def, ['y_pre'])
-    with tf.gfile.FastGFile('Resource/hw_2/pb/hw_2.pb', mode='wb') as f:
+    with tf.gfile.FastGFile('../Resource/hw_2/pb/hw_2.pb', mode='wb') as f:
         f.write(constant_graph.SerializeToString())
 
     # 关闭训练过程的连续显示

@@ -115,11 +115,11 @@ def cosinFunctionFitting_2():
 
 
 def main():
-    # image = changeBgrIntoBrg(r"Resource\hw_1\image1.jpg")
-    #
-    # image = giveRedboxToImage(image, (12, 6), (12 + 90, 6 + 28))
+    image = changeBgrIntoBrg(r"../Resource\hw_1\image1.jpg")
 
-    cosinFunctionFitting_2()
+    image = giveRedboxToImage(image, (12, 6), (12 + 90, 6 + 28))
+
+    # cosinFunctionFitting_2()
 
     pass
 
