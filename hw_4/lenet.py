@@ -58,7 +58,6 @@ class Lenet(Network):
 
             r = tf.add(tf.matmul(x, w), b)
             tf.summary.histogram('full_connected', r)
-
         return r
 
     def _build_network_graph(self, scope_name):
